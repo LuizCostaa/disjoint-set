@@ -46,7 +46,6 @@ int main(int argc, char *argv[]) {
 	}
 	
 	mostra_matriz(m1);
-	
 	desaloca_matriz(&m1);
 	
 	
