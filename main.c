@@ -5,8 +5,11 @@
 
 #include "MatrizDinamica_Lista.h"
 
-
 // Alunos: John Eric Jahn && Luiz Guilherme
+
+void mostra_float( void *x ) {
+	printf("%.2f\n", *(float *)x );
+}
 
 
 int main(int argc, char *argv[]) {
@@ -17,7 +20,7 @@ int main(int argc, char *argv[]) {
 	FILE *file;
 	int tam, i, j;
 	
-	printf("           *DISJOINT-SET*            \n");
+	printf("           *DISJOINT-SET*            \n\n");
 	
 	file = fopen("grafos.txt", "r");
 	
@@ -47,7 +50,6 @@ int main(int argc, char *argv[]) {
 	
 	mostra_matriz(m1);
 	desaloca_matriz(&m1);
-	
-	
+
 	return 0;
 }

@@ -31,4 +31,5 @@ void mostra_lista_v2( Lista l, void (*mostra)(void *) );
 int conta_elementos( Lista l );
 int conta_elementos_v2( Lista l );
 void desaloca_lista( Lista *l );
+void concatena(Lista *l1, Lista *l2);
 

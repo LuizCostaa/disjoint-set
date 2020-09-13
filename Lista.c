@@ -255,3 +255,16 @@ void desaloca_lista( Lista *l ){
 	l->qtd = 0;
 }
 
+void concatena(Lista *l1, Lista *l2) {
+	int i;
+	Elemento *auxL1 = l1->cabeca;
+	
+	while( auxL1->proximo != NULL )
+		auxL1 = auxL1->proximo;
+	
+	auxL1->proximo = l2->cabeca;
+	l1->qtd += l2->qtd;
+	
+	l2->qtd = 0;
+	l2->cabeca = NULL;
+}

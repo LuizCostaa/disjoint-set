@@ -33,7 +33,7 @@ void desaloca_matriz(MatrizDinamica_Lista *p){
 void mostra_matriz(MatrizDinamica_Lista x){
 	int i, j, valor;
 	Lista sub;
-	printf("Dados da matriz:\n");
+	printf("Dados da matriz:\n\n");
 	for( i = 0 ; i < x.lin ; i++ ){
 		le_valor( x.m, &sub, i );
 		for( j = 0 ; j < x.col ; j++ ){
