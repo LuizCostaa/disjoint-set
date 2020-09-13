@@ -7,8 +7,20 @@
 
 // Alunos: John Eric Jahn && Luiz Guilherme
 
-void mostra_float( void *x ) {
-	printf("%.2f\n", *(float *)x );
+void mostra_inteiro( void *x ) {
+	printf("%d\n", *(int *)x );
+}
+
+int compara_inteiro( void *x, void* y ) {
+	int *a = x, *b = y;
+	
+	if ( *a > *b )
+		return 1;
+	
+	if ( *a < *b )
+		return -1;
+		
+	return 0;
 }
 
 
