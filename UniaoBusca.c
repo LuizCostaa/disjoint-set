@@ -6,18 +6,9 @@
 
 
 void inicializa_uniao_busca(UniaoBusca *p, int l, int c){
-    int i, j;
     Lista sub;
     
     inicializa_lista( &p->m, sizeof(Lista) );
-    for( i=0 ; i < l ; i++ ){
-    	inicializa_lista( &sub, sizeof(int) );	
-		for( j = 0 ; j < c; j++ ){
-			int valor = 0;
-			insere_fim( &sub, &valor );
-		}
-		insere_fim( &p->m, &sub );
-	}
     
 	p->lin = l;
 	p->col = c;
