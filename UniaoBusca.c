@@ -11,7 +11,7 @@ void inicializa_uniao_busca(UniaoBusca *p, int l, int c){
     inicializa_lista( &p->m, sizeof(Lista) );
     
 	p->lin = l;
-	p->col = c;
+	p->col = c;234
 }
 
 void desaloca_uniao_busca(UniaoBusca *p){
