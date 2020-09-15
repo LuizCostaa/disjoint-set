@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	MatrizDinamica_Lista m1;
+	MatrizDinamica_Lista matrizAjacencia, UniaoBusca;
 	FILE *file;
 	int tam, i, j;
 	
@@ -48,20 +48,40 @@ int main(int argc, char *argv[]) {
 		exit(0);
 	}
 			
-	inicializa_matriz(&m1, tam, tam);
+	inicializa_matriz(&matrizAjacencia, tam, tam);
 	
 	for(i=0; i<tam; i++) {
 		for(j=0; j<tam; j++) {
 			int valorCelula;
 			fscanf(file, "%d", &valorCelula);
 			if(valorCelula == 1) {
-				modifica_valor_matriz(&m1, i, j, valorCelula);
+				modifica_valor_matriz(&matrizAjacencia, i, j, valorCelula);
 			}
 		}
 	}
 	
-	mostra_matriz(m1);
-	desaloca_matriz(&m1);
+	inicializa_uniao_busca(&UniaoBusca);
+	
+	int x;
+	for(x=0; x<matrizAjacencia.lin; x++){
+		cria_conjunto(&UniaoBusca, x, compara_inteiro);
+	}	
+	
+	
+	int k;
+	Lista teste;
+	
+	for(k=0; k<UniaoBusca.m.qtd; k++){
+		le_valor(UniaoBusca.m, &teste, k);
+		mostra_lista_v2(teste, mostra_inteiro);
+	}
+	
+	//le_valor(UniaoBusca.m, &teste, 2;
+	//mostra_lista(teste, mostra_inteiro);
+	
+	//mostra_matriz(UniaoBusca);
+	mostra_matriz(matrizAjacencia);
+	desaloca_matriz(&matrizAjacencia);
 
 	return 0;
 }

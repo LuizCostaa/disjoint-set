@@ -3,15 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 void inicializa_uniao_busca(UniaoBusca *p, int l, int c){
     Lista sub;
     
     inicializa_lista( &p->m, sizeof(Lista) );
     
 	p->lin = l;
-	p->col = c;234
+	p->col = c;
 }
 
 void desaloca_uniao_busca(UniaoBusca *p){
@@ -51,6 +49,8 @@ int le_valor_uniao_busca(UniaoBusca x, int i, int j, int *pValor){
 }
 
 int cria_conjunto( UniaoBusca *conjunto, int info ) {
+	
+	
 	
 }
 
