@@ -17,6 +17,3 @@ int compara_matrizes(MatrizDinamica_Lista x, MatrizDinamica_Lista y);
 int soma_matrizes(MatrizDinamica_Lista x, MatrizDinamica_Lista y, MatrizDinamica_Lista *p);
 int multiplica_matrizes(MatrizDinamica_Lista x, MatrizDinamica_Lista y, MatrizDinamica_Lista *p);
 
-void inicializa_uniao_busca(MatrizDinamica_Lista *p);
-int cria_conjunto(MatrizDinamica_Lista *p, int info, int (*compara)(void*, void*));
-

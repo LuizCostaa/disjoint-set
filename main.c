@@ -4,6 +4,7 @@
 #include <locale.h>
 
 #include "MatrizDinamica_Lista.h"
+#include "UniaoBusca.h"
 
 // Alunos: John Eric Jahn && Luiz Guilherme
 
@@ -28,7 +29,8 @@ int main(int argc, char *argv[]) {
 	
 	setlocale(LC_ALL, "Portuguese");
 	
-	MatrizDinamica_Lista matrizAjacencia, UniaoBusca;
+	MatrizDinamica_Lista matrizAjacencia;
+	UniaoBusca uniao_busca;
 	FILE *file;
 	int tam, i, j;
 	
@@ -60,26 +62,26 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	inicializa_uniao_busca(&UniaoBusca);
+	inicializa_uniao_busca(&uniao_busca);
 	
 	int x;
 	for(x=0; x<matrizAjacencia.lin; x++){
-		cria_conjunto(&UniaoBusca, x, compara_inteiro);
+		cria_conjunto(&uniao_busca, x, compara_inteiro);
 	}	
 	
 	
 	int k;
 	Lista teste;
 	
-	for(k=0; k<UniaoBusca.m.qtd; k++){
-		le_valor(UniaoBusca.m, &teste, k);
+	for(k=0; k<uniao_busca.m.qtd; k++){
+		le_valor(uniao_busca.m, &teste, k);
 		mostra_lista_v2(teste, mostra_inteiro);
 	}
 	
-	//le_valor(UniaoBusca.m, &teste, 2;
+	//le_valor(uniao_busca.m, &teste, 2;
 	//mostra_lista(teste, mostra_inteiro);
 	
-	//mostra_matriz(UniaoBusca);
+	//mostra_matriz(uniao_busca);
 	mostra_matriz(matrizAjacencia);
 	desaloca_matriz(&matrizAjacencia);
 

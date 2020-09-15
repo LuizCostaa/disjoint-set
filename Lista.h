@@ -1,3 +1,6 @@
+#ifndef LISTA_H
+#define LISTA_H
+
 // Constantes de erro
 #define ERRO_LISTA_VAZIA -1
 #define ERRO_POS_INVALIDA -2
@@ -33,3 +36,4 @@ int conta_elementos_v2( Lista l );
 void desaloca_lista( Lista *l );
 void concatena(Lista *l1, Lista *l2);
 
+#endif
