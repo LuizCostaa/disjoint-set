@@ -9,7 +9,7 @@
 // Alunos: John Eric Jahn && Luiz Guilherme
 
 void mostra_inteiro( void *x ) {
-	printf("%d ", *(int *)x );
+	printf("%d \n", *(int *)x );
 }
 
 int compara_inteiro( void *x, void* y ) {
@@ -69,22 +69,37 @@ int main(int argc, char *argv[]) {
 		cria_conjunto(&uniao_busca, x, compara_inteiro);
 	}
 	
+	
 	for(x=0; x<matrizAjacencia.lin; x++){
 		for(y=0; y<matrizAjacencia.col; y++) {
 			int aux;
 			le_valor_matriz(matrizAjacencia, x, y, &aux);
 			if(aux == 1) {
-				int ret_x, ret_y;
-				ret_x = busca_conjunto(&uniao_busca, &x, compara_inteiro);
-				ret_y = busca_conjunto(&uniao_busca, &y, compara_inteiro);
-				if(ret_x != ret_y) {
-					uniao_conjuntos(&uniao_busca, x, y);
+				int q, t;
+				q = busca_conjunto(&uniao_busca, &x, compara_inteiro);
+				t = busca_conjunto(&uniao_busca, &t, compara_inteiro);
+				if(q != t) {
+					uniao_conjuntos(&uniao_busca, x, y, compara_inteiro);
 				}
 			}
 		}
 	}
-		
-	mostra_conjuntos(&uniao_busca, mostra_inteiro);
+	
+	
+	//uniao_conjuntos(&uniao_busca, 0, 1, compara_inteiro);
+	//uniao_conjuntos(&uniao_busca, 0, 2, compara_inteiro);
+	
+	
+	int k;
+	Lista teste;
+
+	for(k=0; k<uniao_busca.m.qtd; k++){
+		le_valor(uniao_busca.m, &teste, k);
+		mostra_lista_v2(teste, mostra_inteiro);
+	}
+	
+			
+	//mostra_conjuntos(&uniao_busca, mostra_inteiro);
 	desaloca_matriz(&matrizAjacencia);
 	desaloca_uniao_busca(&uniao_busca);	
 

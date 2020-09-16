@@ -4,10 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-void mostra_int( void *x ) {
-	printf("%d\n", *(int *)x );
-}
-
 void inicializa_uniao_busca(UniaoBusca *p) {
 	
 	inicializa_lista( &p->m, sizeof(Lista) );
@@ -29,8 +25,11 @@ int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*)) {
 	return 1;
 }
 
-void uniao_conjuntos(UniaoBusca *p, int a, int b) {
-	Lista aux_a, aux_b, aux_return;
+void uniao_conjuntos(UniaoBusca *p, int a, int b, int (*compara)(void*, void*)) {
+	Lista aux_a, aux_b;
+	
+	a = busca_conjunto(p, &a, compara);
+	b = busca_conjunto(p, &b, compara);
 	
 	le_valor(p->m, &aux_a, a);
 	le_valor(p->m, &aux_b, b);
@@ -40,7 +39,11 @@ void uniao_conjuntos(UniaoBusca *p, int a, int b) {
 	insere_fim(&p->m, &aux_a);
 	
 	remove_pos(&p->m, &aux_a, a);
-	remove_pos(&p->m, &aux_b, b-1);	
+	if(b > 0) {
+		remove_pos(&p->m, &aux_b, b-1);		
+	} else {
+		remove_pos(&p->m, &aux_b, b);	
+	}
 }
 
 int busca_conjunto(UniaoBusca *p, int *info, int (*compara)(void*, void*)) {
