@@ -13,12 +13,9 @@ int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*)) {
 	
 	Lista sub, aux;
 	inicializa_lista( &sub, sizeof(Lista) );
-	for(i=0; i<p->m.qtd; i++) {
-		le_valor(p->m, &aux, i);
-		if(busca(aux, &info, compara) != -1) {
-			printf("VALOR JA ADICIONADO");
-			return -1;
-		}
+	
+	if(busca_conjunto(p, &info, compara) != -1) {
+		return ERRO_VALOR_JA_INSERIDO;
 	}
 	
 	insere_fim( &sub, &info );
@@ -28,11 +25,24 @@ int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*)) {
 }
 
 void uniao_conjuntos(UniaoBusca *p, Lista *x, Lista *y) {
-	
+	Elemento *aux_X = x->cabeca;
+	int i;
+	concatena(x, y);
+	insere_fim(&p->m, x);
 }
 
-int busca_conjunto(UniaoBusca *p, int *info) {
+int busca_conjunto(UniaoBusca *p, int *info, int (*compara)(void*, void*)) {
+	int i;
+	Lista aux;
 	
+	for(i=0; i<p->m.qtd; i++) {
+		le_valor(p->m, &aux, i);
+		if(busca(aux, info, compara) != -1) {
+			return i;
+		}
+	}
+	
+	return ERRO_INDICE_NAO_ENCONTRADO;
 }
 
 void mostra_conjuntos(UniaoBusca *p, void (*mostra)(void *)) {

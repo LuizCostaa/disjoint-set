@@ -69,6 +69,11 @@ int main(int argc, char *argv[]) {
 		cria_conjunto(&uniao_busca, x, compara_inteiro);
 	}	
 	
+	Lista sub1, sub2;
+	le_valor(uniao_busca.m, &sub1, 0);
+	le_valor(uniao_busca.m, &sub2, 1);
+	uniao_conjuntos(&uniao_busca, &sub1, &sub2 );
+	
 	
 	int k;
 	Lista teste;
