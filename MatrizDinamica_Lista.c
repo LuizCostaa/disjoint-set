@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void mostra_int( void *x ) {
-	printf("%d\n", *(int *)x );
-}
 
 void inicializa_matriz(MatrizDinamica_Lista *p, int l, int c){
     int i, j;

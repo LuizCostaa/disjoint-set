@@ -258,6 +258,9 @@ void desaloca_lista( Lista *l ){
 void concatena(Lista *l1, Lista *l2) {
 	int i;
 	Elemento *auxL1 = l1->cabeca;
+	Lista aux;
+	
+	inicializa_lista(&aux, sizeof(int));
 	
 	while( auxL1->proximo != NULL )
 		auxL1 = auxL1->proximo;
@@ -267,4 +270,6 @@ void concatena(Lista *l1, Lista *l2) {
 	
 	l2->qtd = 0;
 	l2->cabeca = NULL;
+	
+	memcpy(&aux, auxL1, sizeof(Lista));
 }

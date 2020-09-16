@@ -2,6 +2,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+void mostra_int( void *x ) {
+	printf("%d\n", *(int *)x );
+}
 
 void inicializa_uniao_busca(UniaoBusca *p) {
 	
@@ -24,11 +29,18 @@ int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*)) {
 	return 1;
 }
 
-void uniao_conjuntos(UniaoBusca *p, Lista *x, Lista *y) {
-	Elemento *aux_X = x->cabeca;
-	int i;
-	concatena(x, y);
-	insere_fim(&p->m, x);
+void uniao_conjuntos(UniaoBusca *p, int a, int b) {
+	Lista aux_a, aux_b, aux_return;
+	
+	le_valor(p->m, &aux_a, a);
+	le_valor(p->m, &aux_b, b);
+		
+	concatena(&aux_a, &aux_b);
+	
+	insere_fim(&p->m, &aux_a);
+	
+	remove_pos(&p->m, &aux_a, a);
+	remove_pos(&p->m, &aux_b, b-1);	
 }
 
 int busca_conjunto(UniaoBusca *p, int *info, int (*compara)(void*, void*)) {
@@ -46,6 +58,20 @@ int busca_conjunto(UniaoBusca *p, int *info, int (*compara)(void*, void*)) {
 }
 
 void mostra_conjuntos(UniaoBusca *p, void (*mostra)(void *)) {
+	int k;
+	Lista aux;
+	
+	printf("/* DADOS DO CONJUNTO */ \n");
+	for(k=0; k<p->m.qtd; k++){
+		le_valor(p->m, &aux, k);
+		Elemento *p;
+		int i;
+		for( p = aux.cabeca, i = 0 ; p != NULL ; p = p->proximo, i++ ){
+			mostra( p->info ); // Invocação por callback
+		}
+		printf("\n");
+	}
+	printf("\n\n");
 		
 }
 

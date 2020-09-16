@@ -9,7 +9,7 @@
 // Alunos: John Eric Jahn && Luiz Guilherme
 
 void mostra_inteiro( void *x ) {
-	printf("%d\n", *(int *)x );
+	printf("%d ", *(int *)x );
 }
 
 int compara_inteiro( void *x, void* y ) {
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 	MatrizDinamica_Lista matrizAjacencia;
 	UniaoBusca uniao_busca;
 	FILE *file;
-	int tam, i, j;
+	int tam, i, j, x, y;
 	
 	printf("           *DISJOINT-SET*            \n\n");
 	
@@ -62,33 +62,31 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	
-	inicializa_uniao_busca(&uniao_busca);
+	mostra_matriz(matrizAjacencia);
 	
-	int x;
+	inicializa_uniao_busca(&uniao_busca);
 	for(x=0; x<matrizAjacencia.lin; x++){
 		cria_conjunto(&uniao_busca, x, compara_inteiro);
-	}	
-	
-	Lista sub1, sub2;
-	le_valor(uniao_busca.m, &sub1, 0);
-	le_valor(uniao_busca.m, &sub2, 1);
-	uniao_conjuntos(&uniao_busca, &sub1, &sub2 );
-	
-	
-	int k;
-	Lista teste;
-	
-	for(k=0; k<uniao_busca.m.qtd; k++){
-		le_valor(uniao_busca.m, &teste, k);
-		mostra_lista_v2(teste, mostra_inteiro);
 	}
 	
-	//le_valor(uniao_busca.m, &teste, 2;
-	//mostra_lista(teste, mostra_inteiro);
-	
-	//mostra_matriz(uniao_busca);
-	mostra_matriz(matrizAjacencia);
+	for(x=0; x<matrizAjacencia.lin; x++){
+		for(y=0; y<matrizAjacencia.col; y++) {
+			int aux;
+			le_valor_matriz(matrizAjacencia, x, y, &aux);
+			if(aux == 1) {
+				int ret_x, ret_y;
+				ret_x = busca_conjunto(&uniao_busca, &x, compara_inteiro);
+				ret_y = busca_conjunto(&uniao_busca, &y, compara_inteiro);
+				if(ret_x != ret_y) {
+					uniao_conjuntos(&uniao_busca, x, y);
+				}
+			}
+		}
+	}
+		
+	mostra_conjuntos(&uniao_busca, mostra_inteiro);
 	desaloca_matriz(&matrizAjacencia);
+	desaloca_uniao_busca(&uniao_busca);	
 
 	return 0;
 }
