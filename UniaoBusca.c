@@ -26,3 +26,29 @@ int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*)) {
 	
 	return 1;
 }
+
+void uniao_conjuntos(UniaoBusca *p, Lista *x, Lista *y) {
+	
+}
+
+int busca_conjunto(UniaoBusca *p, int *info) {
+	
+}
+
+void mostra_conjuntos(UniaoBusca *p, void (*mostra)(void *)) {
+		
+}
+
+void desaloca_uniao_busca(UniaoBusca *p) {
+	int i;
+	Lista sub;
+	for(i=0; i < p->m.qtd; i++) {
+		le_valor(p->m, &sub, i);
+		desaloca_lista(&sub);
+	}
+	desaloca_lista(&p->m);	
+}
+
+
+
+

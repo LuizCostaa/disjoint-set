@@ -6,3 +6,7 @@ typedef struct {
 
 void inicializa_uniao_busca(UniaoBusca *p);
 int cria_conjunto(UniaoBusca *p, int info, int (*compara)(void*, void*));
+void uniao_conjuntos(UniaoBusca *p, Lista *x, Lista *y);
+int busca_conjunto(UniaoBusca *p, int *info);
+void mostra_conjuntos(UniaoBusca *p, void (*mostra)(void *));
+void desaloca_uniao_busca(UniaoBusca *p);
