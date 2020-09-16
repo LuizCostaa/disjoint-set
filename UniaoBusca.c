@@ -36,14 +36,8 @@ void uniao_conjuntos(UniaoBusca *p, int a, int b, int (*compara)(void*, void*)) 
 		
 	concatena(&aux_a, &aux_b);
 	
-	insere_fim(&p->m, &aux_a);
 	
-	remove_pos(&p->m, &aux_a, a);
-	if(b > 0) {
-		remove_pos(&p->m, &aux_b, b-1);		
-	} else {
-		remove_pos(&p->m, &aux_b, b);	
-	}
+	remove_pos(&p->m, &aux_b, b);	
 }
 
 int busca_conjunto(UniaoBusca *p, int *info, int (*compara)(void*, void*)) {
@@ -64,13 +58,13 @@ void mostra_conjuntos(UniaoBusca *p, void (*mostra)(void *)) {
 	int k;
 	Lista aux;
 	
-	printf("/* DADOS DO CONJUNTO */ \n");
+	printf("\n/* DADOS DO CONJUNTO */ \n");
 	for(k=0; k<p->m.qtd; k++){
 		le_valor(p->m, &aux, k);
 		Elemento *p;
 		int i;
 		for( p = aux.cabeca, i = 0 ; p != NULL ; p = p->proximo, i++ ){
-			mostra( p->info ); // Invocação por callback
+			mostra( p->info );
 		}
 		printf("\n");
 	}
@@ -87,7 +81,3 @@ void desaloca_uniao_busca(UniaoBusca *p) {
 	}
 	desaloca_lista(&p->m);	
 }
-
-
-
-
